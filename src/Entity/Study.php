@@ -49,6 +49,11 @@ class Study
      */
     private $lng;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Provider::class, inversedBy="study")
+     */
+    private $provider;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +127,18 @@ class Study
     public function setLng(float $lng): self
     {
         $this->lng = $lng;
+
+        return $this;
+    }
+
+    public function getProvider(): ?Provider
+    {
+        return $this->provider;
+    }
+
+    public function setProvider(?Provider $provider): self
+    {
+        $this->provider = $provider;
 
         return $this;
     }
